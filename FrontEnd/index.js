@@ -9,7 +9,7 @@
   .then((response) => response.json())
   .then((works) => {
     works.forEach((item) => {
-      const image = createImageWithCaption(
+      const image = createImage(
         item.imageUrl,
         item.title,
         item.category.name
@@ -22,7 +22,7 @@
 
   //La fonction  createImageWithCaption() sert à créer un élément figure contenant une image
     // et une légende 
-    function createImageWithCaption(src, alt, caption) {
+    function createImage(src, alt) {
         const figure = document.createElement("figure");
         figure.classList.add("gallery-item");
         const image = document.createElement("img");
