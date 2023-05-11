@@ -120,6 +120,35 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+/* *****Filtres */
+.filters{
+	display: flex;
+	justify-content: space-between;
+	width: 40%;
+	margin: 50px auto;
+}
+.fontButton{
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	background-color: white;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	color: #1D6154;
+	padding: 8px 15px;
+	cursor: pointer;
+}
+.fontButtonActive{
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	color: white;
+	padding: 8px 15px;
+	cursor: pointer;
+}
 
 
 .gallery {
