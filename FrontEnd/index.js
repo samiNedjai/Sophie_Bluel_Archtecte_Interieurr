@@ -14,11 +14,12 @@ fetch("http://localhost:5678/api/works")
        item.title,
        item.category.name
      );
-   console.log(works)
+     console.log(works)
+    console.log(item.category)
 
      divGallery.appendChild(image)
    });
-   works.forEach((item => console.log(item)))
+    works.forEach((item => console.log(item)))
   
  //La fonction  createImageWithLegend() sert à créer un élément figure contenant une image
    // et une légende avec une classe CSS optionnelle en fonction de la valeur de legend.
@@ -31,10 +32,12 @@ fetch("http://localhost:5678/api/works")
        image.alt = alt;
        figure.append(image,alt);
        
-       if (legend === "Objets") figure.classList.add("objects");
-       else if (legend === "Appartements") figure.classList.add("apartments");
+       if (legend === "Objets") 
+          figure.classList.add("objects");
+       else if (legend === "Appartements")
+          figure.classList.add("apartments");
        else if (legend === "Hotels & restaurants")
-         figure.classList.add("hotels");
+          figure.classList.add("hotels");
        return figure;
    }
 
@@ -43,8 +46,8 @@ fetch("http://localhost:5678/api/works")
      const filterButtons = document.querySelectorAll(".filters button");
      filterButtons.forEach((button) => {
        button.addEventListener("click", () => {
-         filterButtons.forEach((b) =>
-           b.classList.toggle("active", b === button)
+         filterButtons.forEach((Button) =>
+           Button.classList.toggle("active", Button === button)
          );
          const className = button.classList[0];
          const images = divGallery.querySelectorAll(".gallery-item");
@@ -64,7 +67,7 @@ fetch("http://localhost:5678/api/works")
    const filterButtons = document.querySelectorAll(".filters button");
 filterButtons.forEach((button) => {
  button.addEventListener("click", () => {
-   filterButtons.forEach((b) => b.classList.remove("fontButtonActive"));
+   filterButtons.forEach((Button) => Button.classList.remove("fontButtonActive"));
    button.classList.add("fontButtonActive");
  });
 });

@@ -13,7 +13,7 @@ form.addEventListener("submit", (e) => {
       "Content-Type": "application/json",
     },
     //Convertit l'e-mail et le mot de passe en objet JSON et les inclut dans le corps de la requête.
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email: email, password: password }),
   })
     //Convertit la réponse HTTP en objet JSON pour être manipulée plus facilement.
     .then((response) => response.json())
@@ -24,7 +24,7 @@ form.addEventListener("submit", (e) => {
         localStorage.setItem("authToken", data.token);
         //Redirige l'utilisateur vers la page d'accueil.
         window.location.href = "index.html";
-      } else {
+      } else  {
         error.textContent = "le mot de passe ou l'adresse email est incorrect";
       }
     });
