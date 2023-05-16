@@ -25,7 +25,7 @@ form.addEventListener("submit", (e) => {
         //Redirige l'utilisateur vers la page d'accueil.
         window.location.href = "index.html";
       } else  {
-        error.textContent = "le mot de passe ou l'adresse email est incorrect";
+        error.textContent = "Erreur dans l’identifiant ou le mot de passe";
       }
     });
 });

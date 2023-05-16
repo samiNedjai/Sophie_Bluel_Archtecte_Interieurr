@@ -71,3 +71,35 @@ filterButtons.forEach((button) => {
    button.classList.add("fontButtonActive");
  });
 });
+
+//**************   EDITOR MODE **************//
+
+const loginLink = document.querySelectorAll("header nav ul li")[2];
+
+function displayScreen() {
+  const editorMode = document.querySelector(".editorMode");
+  const editorModePs = document.querySelectorAll(".editorModeP");
+  const filters = document.querySelector(".filters");
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    editorMode.style.display = "flex";
+    editorModePs.forEach((editorModeP) => {
+      editorModeP.style.visibility = "visible";
+    });
+    filters.style.display = "none";
+    loginLink.textContent = "logout";
+    loginLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("authToken");
+      window.location.reload();
+    });
+  } else {
+    editorMode.style.display = "none";
+    loginLink.textContent = "login";
+    loginLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "login.html";
+    });
+  }
+}
+displayScreen();
