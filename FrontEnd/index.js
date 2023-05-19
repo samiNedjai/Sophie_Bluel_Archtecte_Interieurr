@@ -103,3 +103,84 @@ function displayScreen() {
   }
 }
 displayScreen();
+/************  GESTIONS DE CLICK // TRAVAUX  MODALE***************/
+
+const galleryModal = document.getElementById("modal1");
+const galleryModalContent = galleryModal.querySelector("#gallery-modal");
+const closeModal = document.querySelectorAll(".close-modal");
+const boutonModal = document.querySelector(".buttonModal");
+const modalWrapper = document.querySelector(".modal-wrapper");
+// const modalAddPhoto = document.querySelector(".modal-addPhoto");
+document.querySelectorAll("#portfolio .editorModeP").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    galleryModalContent.innerHTML = "";
+    fetch("http://localhost:5678/api/works/")
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((image) => {
+          const imgContainer = document.createElement("div");
+          imgContainer.classList.add("img-container");
+          // définir l'attribut 'data-id'
+          imgContainer.setAttribute("data-id", image.id);
+          imgContainer.innerHTML = `
+            <img src="${image.imageUrl}" alt="">
+            <div class="trash-icon-container">
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+            <p>éditer</p>`;
+          galleryModalContent.appendChild(imgContainer);
+
+          /************  SUPRESSION DES IMAGES DU DOM DEPUIS L'API***************/
+
+          // Récupère l'icône de corbeille pour chaque image
+          const trashIcon = imgContainer.querySelector(".fa-trash-can");
+          // Ajoute un écouteur d'événement 'click' sur l'icône de corbeille
+          trashIcon.addEventListener("click", () => {
+            // Récupère l'ID de l'image stocké dans l'attribut 'data-id'
+            const imageId = imgContainer.getAttribute("data-id");
+            // Envoie une requête DELETE à l'API pour supprimer l'image
+            fetch(`http://localhost:5678/api/works/${imageId}`, {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
+            })
+              .then((response) => {
+                console.log(response);
+                if (response.ok) {
+                  // Supprime l'élément imgContainer du DOM s'il est supprimé avec succès de l'API
+                  imgContainer.remove();
+                } else {
+                  throw new Error("Erreur lors de la suppression de l'image");
+                }
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          });
+        });
+        galleryModal.style.display = "flex";
+      })
+      .catch((error) => console.error(error));
+  });
+});
+function closeModalHandler() {
+  galleryModal.style.display = "none";
+  modalWrapper.style.display = "block";
+}
+
+galleryModal.addEventListener("click", (e) => {
+  if (e.target === galleryModal) {
+    closeModalHandler();
+  }
+});
+
+closeModal.forEach((element) => {
+  element.addEventListener("click", closeModalHandler);
+});
+
+boutonModal.addEventListener("click", (e) => {
+  e.preventDefault();
+  modalWrapper.style.display = "none";
+});
