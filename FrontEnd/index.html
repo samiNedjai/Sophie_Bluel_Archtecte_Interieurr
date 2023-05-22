@@ -18,7 +18,7 @@
 		<p class="whiteColor fontEditor"><i class="fa-regular fa-pen-to-square fa-lg" style="color: #f7f7f7;"></i>Mode édition</p>
 		<button class="fontButtonEditor">publier les changements</button>
 	</div>
-	<aside id="modal1" class="modal flexCenter flexJustifyCenter" aria-hidden="true" role="" aria-modal="false"
+	<aside id="modal1" class="modal" aria-hidden="true" role="" aria-modal="false"
 		aria-labelledby="Galerie photo" style="display: none">
 		<div class="modal-wrapper">
 			<p class="close-modal">x</p>
@@ -29,6 +29,32 @@
 					<input type="file" id="fileInput" style="display:none">
 				</button>
 				<p class="remoteMessage">Supprimer la galerie</p>
+		</div>
+
+		<div class="modal-addPhoto">
+			<p class="close-modal">x</p>
+			<h3 class="titreModal">Ajout photo</h3>
+				<div class="divAddPhoto">
+					<div class="divIconValidate">
+						<i class="fa-regular fa-image"></i>
+					</div>
+					<button class="buttonAddPhoto">+ Ajouter photo</button>
+					<p>jpg, png : 4mo max</p>
+				</div>
+				<form id="uploadForm" action="http://localhost:5678/api/works" enctype="multipart/form-data">
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title">
+					<label for="category">Catégorie</label>
+					<select id="category" name="category" >
+						<option value="default"></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hotels & restaurants</option>
+						<option value="4">Bar & Restaurant</option>
+					</select>
+				</form>
+				<div class="line"></div>
+				<button class="buttonValidate">Valider</button>
 		</div>
 	</aside>
 <header>

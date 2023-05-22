@@ -87,7 +87,7 @@ nav ul {
 }
 nav li {
 	padding: 0 10px;
-	font-size: 1.2em;
+	font-size: 14px;
 }
 nav a {
 	color: black;
@@ -116,26 +116,46 @@ li:hover {
 	flex: 1
 }
 #introduction h2 {
-	margin-bottom: 1em;
+	margin-bottom: 16px;
 	margin-top: 25px;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	margin-bottom: 8px;
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin-bottom: 16px;
 }
 #portfolio{
 	position: relative;
 }
-/********* MODAL ********/
+/*********LES MODALES ********/
 .titreModal {
 	text-align: center;
 	font-weight: 400;
 	font-size: 28px;
 }
+.line{
+	height:1px;
+	background-color:#B3B3B3;
+	width: 420px;
+	margin: auto;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+	bottom: 175px;
+  }
+  .close-modal{
+	font-weight: 600;
+	font-size: 25px;
+	position: absolute;
+	top: 30px;
+	right: 40px;
+	cursor: pointer;
+  }
+/* *****MOADL1(suprimer un travail *****/
+
 .modal{
 	display: flex;
 	justify-content: center;
@@ -161,7 +181,7 @@ li:hover {
 	padding: 45px;
 	background-color: #fff;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-	z-index: 11;
+	z-index: 1;
   }
   .modal-wrapper .remoteMessage{
 	color: red;
@@ -175,7 +195,7 @@ li:hover {
   .buttonModal{
 	font-family: 'Syne';
 	font-weight: 700;
-	font-size: 1.2em;
+	font-size: 14px;
 	color: white;
 	background-color: #1D6154;
 	width: 237px;
@@ -197,18 +217,7 @@ li:hover {
 	height: 105px;
 	width: 80px;
   }
-  .close-modal{
-	font-weight: 600;
-	font-size: 25px;
-	position: absolute;
-	top: 30px;
-	right: 40px;
-	cursor: pointer;
-  }
-
-
-
-/******* Icon Poubelle ****/
+  /******* Icon Poubelle ****/
 .img-container {
 	position: relative;
 	display: inline-block;
@@ -228,10 +237,114 @@ li:hover {
 	color: white;
 	font-size: 9px;
   }
+/* *******moade2(Ajouterphoto)************ */
 
+  .modal-addPhoto{
+	position: fixed;
+	border-radius: 15px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 630px;
+	height: 630px;
+	max-width: 500px;
+	padding: 45px;
+	background-color: #fff;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+	/* z-index: 10; */
+	display:block;
+  }
+  .divAddPhoto{
+	text-align: center;
+	height: 169px;
+	width: 420px;
+	margin: auto;
+	background: #d6dcdf;
+	padding-top: 20px;
+	box-sizing: border-box;
+	margin-top: 40px;
+	position: relative;
+  }
+  .divAddPhoto img{
+	position: absolute;
+	top: 0;
+	right: 50%;
+	transform: translateX(50%);
+	height: 100%;
+  }
+  .divIconValidate i{
+	 color:#B9C5CC;
+	 font-size: 58px;
+  } 
+  .buttonAddPhoto{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	color:  #306685;
+	background: #CBD6DC;
+	width: 173px;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px ;
+	cursor: pointer;
+	border: none;
+	margin: 10px 0px;
+	cursor: pointer;
+  }
 
+  .modal-addPhoto form {
+	text-align: left;
+	width: 420px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
 
+.modal-addPhoto input, select{
+	height: 50px;
+	font-weight: 400;
+	font-size: 14px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	font-family: 'Work Sans', sans-serif;
+	padding: 15px;
+	box-sizing: border-box;
+	color: #444444;
+}
 
+.modal-addPhoto select{
+	cursor: pointer;
+}
+
+.modal-addPhoto label {
+	color: #3D3D3D;
+	font-weight: 500;
+	font-size: 14px;
+	margin: 32px 0 16px 0;
+}
+
+.modal-addPhoto textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+  
+.buttonValidate{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	color: white;
+	background: #A7A7A7;
+	width: 237px;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px ;
+	cursor: pointer;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 100px;
+	border: none;
+  }
 
 /******* EDITOR MODE *******/
 .editorDiv{
