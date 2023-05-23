@@ -9,6 +9,7 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<script src="https://kit.fontawesome.com/4535d15021.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
@@ -32,6 +33,7 @@
 		</div>
 
 		<div class="modal-addPhoto">
+			<i class="fa-sharp fa-regular fa-arrow-left fa-sm"></i>
 			<p class="close-modal">x</p>
 			<h3 class="titreModal">Ajout photo</h3>
 				<div class="divAddPhoto">
@@ -39,9 +41,9 @@
 						<i class="fa-regular fa-image"></i>
 					</div>
 					<button class="buttonAddPhoto">+ Ajouter photo</button>
-					<p>jpg, png : 4mo max</p>
+					<p class="picture-format">jpg, png : 4mo max</p>
 				</div>
-				<form id="uploadForm" action="http://localhost:5678/api/works" enctype="multipart/form-data">
+				<form id="uploadForm"  enctype="multipart/form-data">
 					<label for="title">Titre</label>
 					<input type="text" name="title" id="title">
 					<label for="category">Catégorie</label>

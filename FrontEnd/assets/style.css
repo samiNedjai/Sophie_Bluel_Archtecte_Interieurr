@@ -87,7 +87,8 @@ nav ul {
 }
 nav li {
 	padding: 0 10px;
-	font-size: 14px;
+	font-size: 16px;
+	font-weight: 400;
 }
 nav a {
 	color: black;
@@ -121,6 +122,8 @@ li:hover {
 }
 
 #introduction p {
+	font-weight: 400;
+	font-size: 14px;
 	margin-bottom: 8px;
 }
 #portfolio h2 {
@@ -326,6 +329,14 @@ li:hover {
 .modal-addPhoto textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.picture-format {
+	font-weight: 400;
+	font-size: 10px;
+}
+.fa-regular, .far {
+    font-weight: 700;
+	cursor:pointer ;
 }
   
 .buttonValidate{

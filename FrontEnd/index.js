@@ -14,12 +14,12 @@ fetch("http://localhost:5678/api/works")
        item.title,
        item.category.name
      );
-     console.log(works)
-    console.log(item.category)
+    //  console.log(works)
+    // console.log(item.category)
 
      divGallery.appendChild(image)
    });
-    works.forEach((item => console.log(item)))
+    works.forEach((item ) => (item))
   
  //La fonction  createImageWithLegend() sert à créer un élément figure contenant une image
    // et une légende avec une classe CSS optionnelle en fonction de la valeur de legend.
@@ -110,7 +110,7 @@ const galleryModalContent = galleryModal.querySelector("#gallery-modal");
 const closeModal = document.querySelectorAll(".close-modal");
 const boutonModal = document.querySelector(".buttonModal");
 const modalWrapper = document.querySelector(".modal-wrapper");
-// const modalAddPhoto = document.querySelector(".modal-addPhoto");
+ const modalAddPhoto = document.querySelector(".modal-addPhoto");
 document.querySelectorAll("#portfolio .editorModeP").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -168,7 +168,9 @@ document.querySelectorAll("#portfolio .editorModeP").forEach((link) => {
 function closeModalHandler() {
   galleryModal.style.display = "none";
   modalWrapper.style.display = "block";
+  modalAddPhoto.style.display = "none";
 }
+
 
 galleryModal.addEventListener("click", (e) => {
   if (e.target === galleryModal) {
@@ -183,4 +185,6 @@ closeModal.forEach((element) => {
 boutonModal.addEventListener("click", (e) => {
   e.preventDefault();
   modalWrapper.style.display = "none";
+  modalAddPhoto.style.display = "block";
 });
+
