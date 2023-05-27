@@ -103,7 +103,7 @@ function displayScreen() {
   }
 }
 displayScreen();
-/************  GESTIONS DE CLICK // TRAVAUX  MODALE***************/
+/************ MODALE1 (aficher et suprimer  image)***************/
 
 const galleryModal = document.getElementById("modal1");
 const galleryModalContent = galleryModal.querySelector("#gallery-modal");
@@ -111,8 +111,7 @@ const closeModal = document.querySelectorAll(".close-modal");
 const boutonModal = document.querySelector(".buttonModal");
 const modalWrapper = document.querySelector(".modal-wrapper");
  const modalAddPhoto = document.querySelector(".modal-addPhoto");
-document.querySelectorAll("#portfolio .editorModeP").forEach((link) => {
-  link.addEventListener("click", (e) => {
+document.querySelector("#portfolio .editorModeP").addEventListener("click", (e) => {
     e.preventDefault();
     galleryModalContent.innerHTML = "";
     fetch("http://localhost:5678/api/works/")
@@ -164,7 +163,7 @@ document.querySelectorAll("#portfolio .editorModeP").forEach((link) => {
       })
       .catch((error) => console.error(error));
   });
-});
+
 function closeModalHandler() {
   galleryModal.style.display = "none";
   modalWrapper.style.display = "block";
@@ -187,4 +186,77 @@ boutonModal.addEventListener("click", (e) => {
   modalWrapper.style.display = "none";
   modalAddPhoto.style.display = "block";
 });
+//************  AJOUTER UNE IMAGE COMME TRAVAUX *****************/
+const buttonAddphoto = document.querySelector(".buttonAddPhoto");
+const uploadForm = document.getElementById("uploadForm");
+const back = document.querySelector(".fa-arrow-left")
+
+buttonAddphoto.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.name = "image";
+  input.accept = "image/*"
+  input.style.display = "none"
+  uploadForm.appendChild(input)
+
+  input.addEventListener("change", () => {
+    const file = input.files[0];
+    console.log(file);
+
+    const modal = document.querySelector(".modal-addPhoto");
+    const titltInput = modal.querySelector("#title");
+    const categorySelect = modal.querySelector("#category");
+    const buttonValidate = modal.querySelector(".buttonValidate");
+
+     // Ajouter un écouteur d'événements input aux champs de formulaire
+     [titltInput, categorySelect].forEach((field) => {
+      field.addEventListener("input", () => {
+        // Vérifier si tous les champs sont remplis
+        const AllFieldsFilled =
+        titltInput.value.trim() !== "" && categorySelect.value !== "default";
+        // Mettre à jour le style du bouton en conséquence
+        buttonValidate.style.backgroundColor = AllFieldsFilled
+          ? "#1D6154"
+          : "";
+      });
+    });
+    buttonValidate.addEventListener("click", (event) => {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append("image", file);
+      formData.append("title", titltInput.value);
+      formData.append("category", categorySelect.value);
+
+      fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          // Fermer la modale après l'ajout réussi de la nouvelle image
+          closeModalHandler();
+        })
+        .catch((error) => console.error(error));
+    });
+
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    const divAddPhoto = modal.querySelector(".divAddPhoto");
+    divAddPhoto.appendChild(img);
+    divAddPhoto.querySelector("p").style.display = "none";
+    divAddPhoto.querySelector("button").style.display = "none";
+  });
+  input.click();
+});
+// pour la flesh de retour
+function backModal() {
+  galleryModal.style.display = "block";
+  modalWrapper.style.display = "block";
+  modalAddPhoto.style.display = "none";
+}
+ back.addEventListener("click" , backModal)
 

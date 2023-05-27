@@ -2,11 +2,11 @@ const form = document.querySelector("#form");
 const error = document.querySelector("#error-message");
 
 form.addEventListener("submit", (e) => {
+  // Empêcher le formulaire d'être soumis de manière traditionnelle
   e.preventDefault();
   const email = form.email.value;
   const password = form.password.value;
-  //Envoie une requête POST à l'API pour se connecter, avec l'URL de l'API
-  //et les options de la requête définies comme arguments.
+  //Envoi la requête POST à l'API 
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {
@@ -20,9 +20,9 @@ form.addEventListener("submit", (e) => {
     .then((data) => {
       //Vérifie si la réponse de l'API contient un jeton d'accès.
       if (data.token) {
-        //Enregistre le jeton d'accès dans le stockage local du navigateur.
+        //Authentification réussie, enregistrement du jeton d'accès dans le stockage local.
         localStorage.setItem("authToken", data.token);
-        //Redirige l'utilisateur vers la page d'accueil.
+        //Redirection de utilisateur vers la page d'accueil.
         window.location.href = "index.html";
       } else  {
         error.textContent = "Erreur dans l’identifiant ou le mot de passe";
