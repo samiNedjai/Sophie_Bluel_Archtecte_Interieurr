@@ -242,13 +242,13 @@ buttonAddphoto.addEventListener("click", () => {
         })
         .catch((error) => console.error(error));
     });
-
+// remplacer div ajouter un photo par l'image sélctionné 
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     const divAddPhoto = modal.querySelector(".divAddPhoto");
     divAddPhoto.appendChild(img);
-    divAddPhoto.querySelector("p").style.display = "none";
     divAddPhoto.querySelector("button").style.display = "none";
+    divAddPhoto.querySelector("p").style.display = "none";
   });
   input.click();
 });
